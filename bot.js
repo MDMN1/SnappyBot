@@ -16,7 +16,7 @@ bot.on('message', message => {
 	} else
 
 	if(message.content.startsWith(prefix + "motd")) {
-		message.channel.sendMessage('This bot is in beta!');
+		message.channel.sendMessage('');
 	}
 
 
