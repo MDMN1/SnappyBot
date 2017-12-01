@@ -1,10 +1,10 @@
 var Discord = require("discord.js");
 var bot = new Discord.Client();
-var prefix = "!";
+var prefix = "==";
 
 bot.on("ready", () => {
 	console.log("I am ready!");
-	bot.user.setGame('Type !cmds')
+	bot.user.setGame('==cmds')
 });
 
 bot.on('message', message => {
@@ -27,7 +27,7 @@ bot.on('message', message => {
 	} else
 
 	if (command === "cmds") {
-		message.channel.sendMessage('Here are the commands! \n**motd - Message of the day!** \n**Add - Add a number! ==add 5 6**');
+		message.channel.sendMessage('Here are the commands! \n \n**motd - Message of the day!** \n \n**Add - Add a number! ==add 5 6**');
 	} else
 
 	if (command === "motd") {
