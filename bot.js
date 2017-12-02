@@ -24,7 +24,7 @@ bot.on("presenceUpdate", (oldMember, newMember) => {
 	if(newMember.user.presence.game && newMember.user.presence.game.name === "ROBLOX") {
 		newMember.addRole(playRole);
 	} else if(!newMember.user.presence.game && newMember.roles.has(playrole.id)) {
-		newMember.removerole(playRole);
+		newMember.removeRole(playRole);
 	}
 });
 
