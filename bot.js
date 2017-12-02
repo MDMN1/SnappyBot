@@ -55,7 +55,7 @@ bot.on('message', message => {
 	} else
 
 	if (command === "motd") {
-		message.channel.sendMessage('This bot is in beta!');
+		message.channel.sendMessage(`Merry Christmas, ${member.user.username}`);
 	}
 
 
