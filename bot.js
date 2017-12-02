@@ -21,7 +21,7 @@ bot.on("presenceUpdate", (oldMember, newMember) => {
 	let playRole = guild.roles.find("name", "Playing ROBLOX");
 	if(!playRole) return;
 
-	if(newMember.user.presence.game && newMember.user.presence.game..name === "ROBLOX") {
+	if(newMember.user.presence.game && newMember.user.presence.game.name === "ROBLOX") {
 		newMember.addRole(playRole);
 	} else if(!newMember.user.presence.game && newMember.roles.has(playrole.id)) {
 		newMember.removerole(playRole);
