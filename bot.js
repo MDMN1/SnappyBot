@@ -9,8 +9,25 @@ bot.on("ready", () => {
 
 bot.on("guildMemberAdd", member => {
 	let guild = member.guild;
-	guild.defaultChannel.sendMessage(`Welcome **${member.user.username}** to this lovely server.`);
+	guild.defaultChannel.sendMessage(`Welcome ***${member.user.username}*** to Team Locality!`);
 });
+
+bot.on("guildCreate", guild =>) {
+	console.log(`New guild added: ${guild.name}, owned by ${guild.owner.user.username}`);
+}
+
+bot.on("presenceUpdate", (oldMember, newMember) => {
+	let guild = newMember.guild;
+	let playRole = guild.roles.find("name", "Playing ROBLOX");
+	if(!playRole) return;
+
+	if(newMembert.user.presence.game && newMember.user.presence.game..name === "ROBLOX") {
+		newMember.addRole(playRole);
+	} else if(!newMember.user.presence.game && newMember.roles.has(playrole.id)) {
+		newMember.removerole(playRole);
+	}
+})
+
 
 bot.on('message', message => {
 	if(message.author.bot) return;
