@@ -31,6 +31,7 @@ bot.on("presenceUpdate", (oldMember, newMember) => {
 
 
 bot.on('message', message => {
+	if(message.author.bot) return;
 	if(!message.content.startsWith(config.prefix)) return;
 
 	let command = message.content.split(" ")[0];
