@@ -20,7 +20,7 @@ bot.on('message', message => {
 		let numArray = args.map(n=> parseInt(n));
 		let total = numArray.reduce( (p, c) => p+c);
 
-		message.channel.sendMessage(numArray[0] + numArray[1]);
+		message.channel.sendMessage(total);
 	} else
 
 	if (command === "say") {
