@@ -77,4 +77,4 @@ if (command === "say") {
 
 
 
-bot.login("Mzg2MjM3ODg5NTI2MjM1MTM2.DQNCGQ.2Z4TmIcd9N2mjp8J9_N2N37g8-g");
+bot.login();
