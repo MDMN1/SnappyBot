@@ -55,7 +55,8 @@ bot.on('message', message => {
 	} else
 
 	if (command === "motd") {
-		message.channel.sendMessage(`Merry Christmas, ${member.user.username}`);
+		let guild = member.guild;
+		guild.channel.sendMessage(`**Merry christmas,** ***${member.user.username}***`);
 	}
 
 
