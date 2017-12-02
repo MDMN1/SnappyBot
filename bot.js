@@ -7,6 +7,11 @@ bot.on("ready", () => {
 	bot.user.setGame('Happy to help! Type !cmds')
 });
 
+bot.on("guildMemberAdd", member => {
+	let guild = member.guild;
+	guild.defaultChannel.sendMessage(`Welcome **${member.user.username}** to this lovely server.`);
+})
+
 bot.on('message', message => {
 	if(message.author.bot) return;
 	if(!message.content.startsWith(config.prefix)) return;
