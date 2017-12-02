@@ -16,19 +16,6 @@ bot.on("guildCreate", guild => {
 	console.log(`New guild added : ${guild.name}, owned by ${guild.owner.user.username}`);
 });
 
-bot.on("presenceUpdate", (oldMember, newMember) => {
-	let guild = newMember.guild;
-	let playRole = guild.roles.find("name", "Playing ROBLOX");
-	if(!playRole) return;
-
-	if(newMember.user.presence.game && newMember.user.presence.game.name === "ROBLOX") {
-		newMember.addRole(playRole);
-	} else if(!newMember.user.presence.game && newMember.roles.has(playRole.id)) {
-		newMember.removeRole(playRole);
-	}
-});
-
-
 bot.on('message', message => {
 	if(message.author.bot) return;
 	if(!message.content.startsWith(config.prefix)) return;
