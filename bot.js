@@ -47,6 +47,10 @@ bot.on('message', message => {
 	} else
 
 	if (command === "say") {
+		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "Operator");
+		if(!message.member.roles.has(AdminRole.id)) {
+			return message.reply("Not enough permissions!");
+		}
 		message.channel.sendMessage(args.join(" "));
 	} else
 
