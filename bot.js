@@ -1,6 +1,6 @@
 var Discord = require("discord.js");
 var bot = new Discord.Client();
-const config = require("./config.json");
+var config = require("./config.json");
 
 bot.on("ready", () => {
 	console.log("I am ready!");
@@ -41,4 +41,4 @@ bot.on('message', message => {
 
 
 
-bot.login(config.token);
+bot.login(process.env.BOT_TOKEN);
