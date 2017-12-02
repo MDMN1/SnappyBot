@@ -17,8 +17,8 @@ bot.on('message', message => {
 	let args = message.content.split(" ").slice(1);
 
 	if (command === "add") {
-		let [num1, num2] = [parseInt(args[0]), parseInt(args[1]);]
-		message.channel.sendMessage(num1 + num2)
+		let numArray = args.map(n=> parseInt(n))
+		message.channel.sendMessage(numArray[0] + numArray[1]);
 	} else
 
 	if (command === "say") {
