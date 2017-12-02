@@ -48,7 +48,7 @@ bot.on('message', message => {
 
 	if (command === "say") {
 		let AdminRole = message.guild.roles.find("name", "Admin");
-		if(message.member.roles.has(modRole.id)) {
+		if(message.member.roles.has(AdminRole.id)) {
 			message.channel.sendMessage(args.join(" "));
 		} else {
 			message.channel.reply("Hey, stop right there! You don't have enough **permissions!**");
