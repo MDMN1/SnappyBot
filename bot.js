@@ -4,7 +4,7 @@ var prefix = "!";
 
 bot.on("ready", () => {
 	console.log("I am ready!");
-	bot.user.setGame('!cmds')
+	bot.user.setGame('Type !cmds')
 });
 
 bot.on('message', message => {
