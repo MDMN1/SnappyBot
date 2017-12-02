@@ -63,7 +63,6 @@ bot.on('message', message => {
 		if(!message.member.roles.has(AdminRole,id)) {
 			return message.reply("Not enough permissions!");
 		}
-
 		if(message.mentions.users.size === 0) {
 			return message.reply("Please mention the user you want to kick!");
 		}
@@ -71,6 +70,10 @@ bot.on('message', message => {
 		if(!kickMember) {
 			return message.reply("**WARNING:** That user doesn't exist!");
 		}
+		message.guild.member(bot.user).hasPermission("KICK_MEMBERS")) {
+			return message.reply("Sorry, I don't have the permissions to **KICK**! Please give it to me.")
+		}
+		kickMember.kick();
 	}
 
 
