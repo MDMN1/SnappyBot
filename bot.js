@@ -77,9 +77,9 @@ bot.on('message', message => {
 		if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")) {
 			return message.reply("Sorry, I don't have the permissions to **KICK**! Please give it to me.");
 		}
-		kickMember.kick().then(member =>) {
+		kickMember.kick().then(member => {
 			message.reply(`${member.user.username} was successfully kicked!`);
-		}
+		});
 	}
 
 
