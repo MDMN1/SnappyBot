@@ -27,7 +27,7 @@ bot.on('message', message => {
 	} else
 
 	if (command === "cmds") {
-		message.channel.sendMessage('Here are the commands! \n **motd - Message of the day!** \n **Add - Add a number! ==add 5 6** \n **Say - The bot says something you just said!**');
+		message.channel.sendMessage('Here are the commands! \n **motd - Message of the day!** \n **Add - Add a number! !add 5 6** \n **Say - The bot says something you just said!**');
 	} else
 
 	if (command === "motd") {
