@@ -14,7 +14,7 @@ bot.on("guildMemberAdd", member => {
 
 bot.on("guildCreate", guild =>) {
 	console.log(`New guild added: ${guild.name}, owned by ${guild.owner.user.username}`);
-}
+});
 
 bot.on("presenceUpdate", (oldMember, newMember) => {
 	let guild = newMember.guild;
