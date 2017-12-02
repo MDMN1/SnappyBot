@@ -1,10 +1,10 @@
 var Discord = require("discord.js");
 var bot = new Discord.Client();
-var prefix = "==";
+var prefix = "!";
 
 bot.on("ready", () => {
 	console.log("I am ready!");
-	bot.user.setGame('==cmds')
+	bot.user.setGame('!cmds')
 });
 
 bot.on('message', message => {
