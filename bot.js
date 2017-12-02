@@ -65,7 +65,7 @@ bot.on('message', message => {
 	if (command === "kick") {
 		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "🛠Developer🛠", "Operator");
 		if(!message.member.roles.has(AdminRole.id)) {
-			return message.reply("Not enough permissions!");
+			return message.reply("Not enough permissions! Operator+ role required!");
 		}
 		if(message.mentions.users.size === 0) {
 			return message.reply("Please mention the user you want to kick!");
