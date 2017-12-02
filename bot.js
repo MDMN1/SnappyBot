@@ -1,6 +1,6 @@
 var Discord = require("discord.js");
 var bot = new Discord.Client();
-var prefix = "!";
+var config = require("./config.json");
 
 bot.on("ready", () => {
 	console.log("I am ready!");
@@ -9,10 +9,10 @@ bot.on("ready", () => {
 
 bot.on('message', message => {
 	if(message.author.bot) return;
-	if(!message.content.startsWith(prefix)) return;
+	if(!message.content.startsWith(config.prefix)) return;
 
 	let command = message.content.split(" ")[0];
-	command = command.slice(prefix.length);
+	command = command.slice(config.prefix.length);
 
 	let args = message.content.split(" ").slice(1);
 
@@ -41,4 +41,4 @@ bot.on('message', message => {
 
 
 
-bot.login(process.env.BOT_TOKEN);
+bot.login(config.token);
