@@ -47,7 +47,12 @@ bot.on('message', message => {
 	} else
 
 	if (command === "say") {
-		message.channel.sendMessage(args.join(" "));
+		let AdminRole = message.guild.roles.find("name", "Admin", "Head Admin");
+		if(message.member.roles.has(AdminRole)) {
+			message.channel.sendMessage(args.join(" "));
+		} else {
+			message.channel.reply("Hey! Stop right there! You don't have the role **Admin+**")
+		}
 	} else
 
 	if (command === "cmds") {
