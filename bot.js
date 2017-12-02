@@ -68,9 +68,9 @@ bot.on('message', message => {
 		}
 		let kickMember = message.guild.member(message.mentions.users.first());
 		if(!kickMember) {
-			return message.reply("**WARNING:** That user doesn't exist!");
+			return message.reply("That user doesn't exist!");
 		}
-		message.guild.member(bot.user).hasPermission("KICK_MEMBERS") {
+		if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS") {
 			return message.reply("Sorry, I don't have the permissions to **KICK**! Please give it to me.");
 		}
 		kickMember.kick();
