@@ -1,6 +1,6 @@
 var Discord = require("discord.js");
 var bot = new Discord.Client();
-var config = require("./config.json");
+var config = require("./LocalityBot/config.json");
 
 bot.on("ready", () => {
 	console.log("I am ready!");
