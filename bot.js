@@ -58,6 +58,21 @@ bot.on('message', message => {
 		message.channel.sendMessage('**Merry christmas!**');
 	}
 
+	if (command === "kick") {
+		let AdminRole = message.guild.roles.find("name", "Admin");
+		if(!message.member.roles.has(AdminRole,id)) {
+			return message.reply("Not enough permissions!");
+		}
+
+		if(message.mentions.users.size === 0) {
+			return message.reply("Please mention the user you want to kick!");
+		}
+		let kickMember = message.guild.member(message.mentions.users.first());
+		if(!kickMember) {
+			return message.reply("**WARNING:** That user doesn't exist!");
+		}
+	}
+
 
 
 });
