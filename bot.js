@@ -46,35 +46,22 @@ bot.on('message', message => {
 		message.channel.sendMessage(total);
 	} else
 
+	if (command === "say") {
+		message.channel.sendMessage(args.join(" "));
+	} else
+
 	if (command === "cmds") {
-		message.channel.sendMessage('Here are the commands! \n **motd - Message of the day!** \n **Add - Add a number! !add 5 6** \n **Say - The bot says something you just said!**');
+		message.channel.sendMessage('Here are the commands! \n **motd - Message of the day!** \n **Add - Add a number! !add 5 6** \n **Say - The bots says something you just said!**');
 	} else
 
 	if (command === "motd") {
 		message.channel.sendMessage('This bot is in beta!');
-	} else {
-	if (command === "say") {
-		let AdminRole = message.guild.roles.find("name", "Admin");
-		if(message.member.roles.has(AdminRole.id)) {
-			message.channel.sendMessage(args.join(" "));
-		} else {
-			message.channel.reply("Hey, stop right there! You don't have enough **permissions!**");
-		}
-}
+	}
 
 
 
 });
 
 
-if (command === "say") {
-	let AdminRole = message.guild.roles.find("name", "Admin");
-	if(message.member.roles.has(AdminRole.id)) {
-		message.channel.sendMessage(args.join(" "));
-	} else {
-		message.channel.reply("Hey, stop right there! You don't have enough **permissions!**");
-	}
 
-
-
-bot.login();
+bot.login(process.env.BOT_TOKEN);
