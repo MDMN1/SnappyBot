@@ -46,6 +46,13 @@ bot.on('message', message => {
 		message.channel.sendMessage(total);
 	} else
 
+	if (command === "cmds") {
+		message.channel.sendMessage('Here are the commands! \n **motd - Message of the day!** \n **Add - Add a number! !add 5 6** \n **Say - The bot says something you just said!**');
+	} else
+
+	if (command === "motd") {
+		message.channel.sendMessage('This bot is in beta!');
+	} else {
 	if (command === "say") {
 		let AdminRole = message.guild.roles.find("name", "Admin");
 		if(message.member.roles.has(AdminRole.id)) {
@@ -53,21 +60,21 @@ bot.on('message', message => {
 		} else {
 			message.channel.reply("Hey, stop right there! You don't have enough **permissions!**");
 		}
-
-	} else
-
-	if (command === "cmds") {
-		message.channel.sendMessage('Here are the commands! \n **motd - Message of the day!** \n **Add - Add a number! !add 5 6** \n **Say - The bot says something you just said!**');
-	} else
-
-	if (command === "motd") {
-		message.channel.sendMessage('This bot is in beta!');
-	}
+}
 
 
 
 });
 
 
+if (command === "say") {
+	let AdminRole = message.guild.roles.find("name", "Admin");
+	if(message.member.roles.has(AdminRole.id)) {
+		message.channel.sendMessage(args.join(" "));
+	} else {
+		message.channel.reply("Hey, stop right there! You don't have enough **permissions!**");
+	}
 
-bot.login(process.env.BOT_TOKEN);
+
+
+bot.login("Mzg2MjM3ODg5NTI2MjM1MTM2.DQNCGQ.2Z4TmIcd9N2mjp8J9_N2N37g8-g");
