@@ -47,9 +47,9 @@ bot.on('message', message => {
 	} else
 
 	if (command === "say") {
-		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "Operator");
+		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "Operator", "💬Active-Users💬", "💥Veteran💥");
 		if(!message.member.roles.has(AdminRole.id)) {
-			return message.reply("Not enough permissions!");
+			return message.channel.sendMessage("This command is only available to 💬Active-Users💬+ due to abusers, sorry! **(This command might be brought back!)**");
 		}
 		message.channel.sendMessage(args.join(" "));
 	} else
