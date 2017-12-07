@@ -47,15 +47,16 @@ bot.on('message', message => {
 	} else
 
 	if (command === "say") {
-		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "💬Active-Users💬", "💥Veteran💥");
+		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "Operator", "💬Active-Users💬", "💥Veteran💥");
 		if(!message.member.roles.has(AdminRole.id)) {
-			return message.channel.sendMessage("This command is only available to 💬Active-Users💬+ due to abusers, sorry!");
+			return message.channel.sendMessage("This command is only available to 💬Active-Users💬+ due to abusers, sorry! **(This command might be brought back!)**");
 		}
 		message.channel.sendMessage(args.join(" "));
 	} else
 
 	if (command === "cmds") {
-		message.channel.sendMessage("Here are the commands! \n **motd - Message of the day!** \n **Add - Add a number! !add 5 6** \n **Say - The bots says something you just said! (Active-Users+ only!)** \n **Kick - Kicks a player (Operator+ only!)**");
+		message.channel.sendMessage('I sent you a private message regarding the commands, please check your **messages!**');
+		message.author.sendMessage("Here are the commands! \n **motd - Message of the day!** \n **Add - Add a number! !add 5 6** \n **Say - The bots says something you just said! (Active-Users+ only!)** \n **Kick - Kicks a player (Operator+ only!)**");
 	} else
 
 	if (command === "motd") {
@@ -63,7 +64,7 @@ bot.on('message', message => {
 	}
 
 	if (command === "kick") {
-		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "🛠Developer🛠");
+		let AdminRole = message.guild.roles.find("name", "Admin" + "Main Owner" + "Head-Admin" + "🛠Developer🛠" + "Operator");
 		if(!message.member.roles.has(AdminRole.id)) {
 			return message.reply("Not enough permissions! Operator+ role required!");
 		}
@@ -85,7 +86,6 @@ bot.on('message', message => {
 	if (command === "pm") {
 		message.author.sendMessage("Hello, I've successfully sent you a **private message**, ignore this!");
 	}
-	
 
 
 
