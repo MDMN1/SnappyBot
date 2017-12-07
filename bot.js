@@ -47,7 +47,7 @@ bot.on('message', message => {
 	} else
 
 	if (command === "say") {
-		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "Operator", "💬Active-Users💬", "💥Veteran💥");
+		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "💬Active-Users💬", "💥Veteran💥");
 		if(!message.member.roles.has(AdminRole.id)) {
 			return message.channel.sendMessage("This command is only available to 💬Active-Users💬+ due to abusers, sorry! **(This command might be brought back!)**");
 		}
@@ -63,7 +63,7 @@ bot.on('message', message => {
 	}
 
 	if (command === "kick") {
-		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "🛠Developer🛠", "Operator");
+		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "🛠Developer🛠");
 		if(!message.member.roles.has(AdminRole.id)) {
 			return message.reply("Not enough permissions! Operator+ role required!");
 		}
