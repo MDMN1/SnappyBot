@@ -63,7 +63,7 @@ bot.on('message', message => {
 	}
 
 	if (command === "kick") {
-		let AdminRole = message.guild.roles.find("name", "Admin", "name", "Head-Admin");
+		let AdminRole = message.guild.roles.find("name", "Admin", "Head-Admin");
 		if(!message.member.roles.has(AdminRole.id)) {
 			return message.reply("Not enough permissions! Operator+ role required!");
 		}
