@@ -55,7 +55,7 @@ bot.on('message', message => {
 	} else
 
 	if (command === "cmds") {
-		message.channel.sendMessage("Here are the commands! \n **motd - Message of the day!** \n **Add - Add a number! !add 5 6** \n **Say - The bots says something you just said! (Active-Users+ only!)** \n **Kick - Kicks a player (Operator+ only!)**");
+		message.channel.sendMessage('Here are the commands! \n **motd - Message of the day!** \n **Add - Add a number! !add 5 6** \n **Say - The bots says something you just said! (Active-Users+ only!)** \n **Kick - Kicks a player (Operator+ only!)**');
 	} else
 
 	if (command === "motd") {
