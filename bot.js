@@ -49,7 +49,7 @@ bot.on('message', message => {
 	if (command === "say") {
 		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "💬Active-Users💬", "💥Veteran💥");
 		if(!message.member.roles.has(AdminRole.id)) {
-			return message.channel.sendMessage("This command is only available to 💬Active-Users💬+ due to abusers, sorry! **(This command might be brought back!)**");
+			return message.channel.sendMessage("This command is only available to 💬Active-Users💬+ due to abusers, sorry!");
 		}
 		message.channel.sendMessage(args.join(" "));
 	} else
@@ -86,6 +86,14 @@ bot.on('message', message => {
 		message.author.sendMessage("Hello, I've successfully sent you a **private message**, ignore this!");
 	}
 
+	if(sender.id === '386237889526235136') {
+		return;
+	}
+
+	if(msg.includes('shut up', 'shut')) {
+		message.delete();
+		message.author.send("Do not be **disrespectful** to other players, or you'll receive a warning!");
+	}
 
 
 });
