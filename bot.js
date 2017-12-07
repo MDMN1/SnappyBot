@@ -85,10 +85,8 @@ bot.on('message', message => {
 	if (command === "pm") {
 		message.author.sendMessage("Hello, I've successfully sent you a **private message**, ignore this!");
 	}
+	
 
-	if(sender.id === '386237889526235136') {
-		return;
-	}
 
 
 });
