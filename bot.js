@@ -90,11 +90,6 @@ bot.on('message', message => {
 		return;
 	}
 
-	if(msg.includes('shut up', 'shut')) {
-		message.delete();
-		message.author.send("Do not be **disrespectful** to other players, or you'll receive a warning!");
-	}
-
 
 });
 
