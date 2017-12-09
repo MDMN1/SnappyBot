@@ -9,7 +9,7 @@ bot.on("ready", () => {
 
 bot.on("guildMemberAdd", member => {
 	let guild = member.guild;
-	guild.defaultChannel.sendMessage(`Welcome ***${member.user.username}*** to ${guild.name}!`);
+	guild.defaultChannel.sendMessage(`Welcome ***${member.user.username}*** to ${guild.name}`);
 });
 
 bot.on("guildCreate", guild => {
@@ -47,7 +47,7 @@ bot.on('message', message => {
 	} else
 
 	if (command === "say") {
-		let AdminRole = message.guild.roles.find("name", "Admin", "Main Owner", "Head-Admin", "Operator", "💬Active-Users💬", "💥Veteran💥");
+		let AdminRole = message.guild.roles.find("name", "Head-Admin");
 		if(!message.member.roles.has(AdminRole.id)) {
 			return message.channel.sendMessage("This command is only available to 💬Active-Users💬+ due to abusers, sorry! **(This command might be brought back!)**");
 		}
@@ -63,7 +63,7 @@ s
 	}
 
 	if (command === "kick") {
-		let AdminRole = message.guild.roles.find("name", "Admin", "Head-Admin");
+		let AdminRole = message.guild.roles.find("name", "Head-Admin");
 		if(!message.member.roles.has(AdminRole.id)) {
 			return message.reply("Not enough permissions! Operator+ role required!");
 		}
@@ -80,14 +80,14 @@ s
 		kickMember.kick().then(member => {
 			message.reply(`${member.user.username} was successfully kicked!`);
 		});
-	} else
+	}
 
 	if (command === "subtract") {
 		let numArray = args.map(n=> parseInt(n));
 		let total = numArray.reduce( (p, c) => p-c);
 
 		message.channel.sendMessage(total);
-	} else
+	}
 
 
 
