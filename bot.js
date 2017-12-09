@@ -63,7 +63,7 @@ s
 	}
 
 	if (command === "kick") {
-		let AdminRole = message.guild.roles.find("name", "Admin, Head-Admin");
+		let AdminRole = message.guild.roles.find("name", "Admin", "Head-Admin");
 		if(!message.member.roles.has(AdminRole.id)) {
 			return message.reply("Not enough permissions! Operator+ role required!");
 		}
@@ -80,6 +80,13 @@ s
 		kickMember.kick().then(member => {
 			message.reply(`${member.user.username} was successfully kicked!`);
 		});
+	} else
+
+	if (command === "subtract") {
+		let numArray = args.map(n=> parseInt(n));
+		let total = numArray.reduce( (p, c) => p-c);
+
+		message.channel.sendMessage(total);
 	} else
 
 
