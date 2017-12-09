@@ -83,7 +83,7 @@ s
 	}
 
 	if (command === "embed") {
-		message.channel.send({embed:{
+		message.channel.sendMessage({embed:{
 			title:"hi what am i doing here",
 			description:"hello again",
 			color: 0x016476
