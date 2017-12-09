@@ -9,7 +9,7 @@ bot.on("ready", () => {
 
 bot.on("guildMemberAdd", member => {
 	let guild = member.guild;
-	guild.defaultChannel.sendMessage(`Welcome ***${member.user.username}*** to ${guild.name} \n Server Creator: **${guild.owner.user.username}**`);
+	guild.defaultChannel.sendMessage(`Welcome ***${member.user.username}*** to ${guild.name}!`);
 });
 
 bot.on("guildCreate", guild => {
