@@ -63,7 +63,7 @@ s
 	}
 
 	if (command === "kick") {
-		let AdminRole = message.guild.roles.find("name", "Admin" && "Head-Admin");
+		let AdminRole = message.guild.roles.find("name", "Admin, Head-Admin");
 		if(!message.member.roles.has(AdminRole.id)) {
 			return message.reply("Not enough permissions! Operator+ role required!");
 		}
@@ -80,14 +80,6 @@ s
 		kickMember.kick().then(member => {
 			message.reply(`${member.user.username} was successfully kicked!`);
 		});
-	} else
-
-	if (command === "embed") {
-		message.channel.sendMessage({embed:{
-			title:"hi what am i doing here",
-			description:"hello again",
-			color: 0x016476
-		}})
 	} else
 
 
