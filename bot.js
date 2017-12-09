@@ -82,8 +82,12 @@ s
 		});
 	}
 
-	if (command === "pm") {
-		message.author.sendMessage("Hello, I've successfully sent you a **private message**, ignore this!");
+	if (command === "embed") {
+		message.channel.sendMessage(embed: {
+			title:"hi what am i doing here",
+			description:"hello again",
+			color: 0x016476
+		}})
 	}
 
 
