@@ -80,7 +80,7 @@ s
 		kickMember.kick().then(member => {
 			message.reply(`${member.user.username} was successfully kicked!`);
 		});
-	}
+	} else
 
 	if (command === "embed") {
 		message.channel.sendMessage({embed:{
@@ -88,7 +88,7 @@ s
 			description:"hello again",
 			color: 0x016476
 		}})
-	}
+	} else
 
 
 
