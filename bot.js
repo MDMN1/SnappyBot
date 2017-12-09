@@ -82,8 +82,8 @@ s
 		});
 	}
 
-	if (command === "pmall") {
-		message.users.sendMessage("Hi");
+	if (command === "pm") {
+		message.author.sendMessage("Hello, I've successfully sent you a **private message**, ignore this!");
 	}
 
 
