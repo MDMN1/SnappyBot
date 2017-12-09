@@ -9,7 +9,7 @@ bot.on("ready", () => {
 
 bot.on("guildMemberAdd", member => {
 	let guild = member.guild;
-	guild.defaultChannel.sendMessage(`Welcome ***${member.user.username}*** to Team Locality!`);
+	guild.defaultChannel.sendMessage(`Welcome ***${member.user.username}*** to ${guild.name}`);
 });
 
 bot.on("guildCreate", guild => {
@@ -57,7 +57,7 @@ bot.on('message', message => {
 	if (command === "cmds") {
 		message.channel.sendMessage('Here are the commands! \n **motd - Message of the day!** \n **Add - Add a number! !add 5 6** \n **Say - The bots says something you just said! (Active-Users+ only!)** \n **Kick - Kicks a player (Operator+ only!)**');
 	} else
-
+s
 	if (command === "motd") {
 		message.channel.sendMessage('**Merry christmas!**');
 	}
@@ -82,8 +82,8 @@ bot.on('message', message => {
 		});
 	}
 
-	if (command === "pm") {
-		message.author.sendMessage("Hello, I've successfully sent you a **private message**, ignore this!");
+	if (command === "pmall") {
+		message.users.sendMessage("Hi");
 	}
 
 
