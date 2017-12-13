@@ -20,7 +20,7 @@ const handleMessage = (message) => {
   } else
 
   if (command === 'say') {
-    if (message.author.id !== config.ownerID) return message.reply('Arrooo???');
+    if (message.author.id !== config.ownerID) return message.reply('Not enough permissions!');
     message.channel.send(args.join(' '));
     message.delete();
   } else
@@ -31,14 +31,32 @@ const handleMessage = (message) => {
       return message.channel.send('You do not have enough **permissions** to execute this command (Announce Permission required!)');
     }
     const announce = announcement = args.join(" ");
-    const embed = new Discord.MessageEmbed()
-      .setDescription(`${message.guild.name}'s Announcement!`)
+    const embed = new Discord.MessageEmbed() 
       .setThumbnail(message.guild.iconURL())
       .setFooter('Server owned by ' + message.guild.owner.user.tag, message.guild.owner.user.avatarURL())
-      .setColor(0x48C9B0)
+      .setColor(0x16A085)
       .addField(`Announcement by ${message.author.username}!`, `${announcement}`)
     message.channel.send({ embed });
     message.delete();
+  }
+
+  if (command === 'eval') {
+    if(message.author.id !== config.ownerID) return;
+    try {
+      const code = args.join(" ");
+      const evaled = eval(code);
+
+      if (typeof evaled !== "string")
+        evaled = require("util").inspect(evaled);
+
+      message.channel.send(clean(evaled), {code:"xl"});
+    } catch (err) {
+      message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
+    }
+  }
+
+  if (command === 'cmds') {
+    message.channel.send('Adding it soon, stay stuned!');
   }
 };
 
