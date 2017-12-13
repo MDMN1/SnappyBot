@@ -1,94 +1,66 @@
-var Discord = require("discord.js");
-var bot = new Discord.Client();
-var config = require("./config.json");
+/* eslint consistent-return: 0, no-console: 0 */
+const Discord = require('discord.js');
 
-bot.on("ready", () => {
-	console.log("I am ready!");
-	bot.user.setGame('Happy to help! Type !cmds')
-});
+const config = require('./config.json');
 
-bot.on("guildMemberAdd", member => {
-	let guild = member.guild;
-	guild.defaultChannel.sendMessage(`Welcome ***${member.user.username}*** to ${guild.name}`);
-});
+const client = new Discord.Client();
 
-bot.on("guildCreate", guild => {
-	console.log(`New guild added : ${guild.name}, owned by ${guild.owner.user.username}`);
-});
+const handleMessage = (message) => {
+  if (message.author.bot) return;
 
-bot.on("presenceUpdate", (oldMember, newMember) => {
-	let guild = newMember.guild;
-	let playRole = guild.roles.find("name", "Playing ROBLOX");
-	if(!playRole) return;
+  if (message.content.indexOf(config.prefix) !== 0) return;
 
-	if(newMember.user.presence.game && newMember.user.presence.game.name === "ROBLOX") {
-		newMember.addRole(playRole);
-	} else if(!newMember.user.presence.game && newMember.roles.has(playRole.id)) {
-		newMember.removeRole(playRole);
-	}
-});
+  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
 
+  if (command === 'ping') {
+    message.channel.send('Pong...').then((msg) => {
+      msg.edit(`Pong! Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms!`);
+    });
+  } else
 
+  if (command === 'say') {
+    if (message.author.id !== config.ownerID) return message.reply('Arrooo???');
+    message.channel.send(args.join(' '));
+    message.delete();
+  } else
 
-bot.on('message', message => {
-	if(message.author.bot) return;
-	if(!message.content.startsWith(config.prefix)) return;
+  if (command === 'announce') {
+    const AnnouncePerm = message.guild.roles.find("name", "Announce Permission");
+    if(!message.member.roles.has(AnnouncePerm.id)) {
+      return message.channel.send('You do not have enough **permissions** to execute this command (Announce Permission required!)');
+    }
+    const announce = announcement = args.join(" ");
+    const embed = new Discord.MessageEmbed()
+      .setDescription(`${message.guild.name}'s Announcement!`)
+      .setThumbnail(message.guild.iconURL())
+      .setFooter('This announcement was made by ' + message.guild.owner.user.tag, message.guild.owner.user.avatarURL())
+      .setColor(0x16A085)
+      .addField(`Announcement by ${message.author.username}`, `${announcement}`)
+    message.channel.send({ embed });
+    message.delete();
+  }
+};
 
-	let command = message.content.split(" ")[0];
-	command = command.slice(config.prefix.length);
+const handleGuildCreate = (guild) => {
+  console.log(`I have been added to the guild: ${guild.name}, Owned by: ${guild.owner.user.tag}, with ${guild.memberCount} members.`);
+};
 
-	let args = message.content.split(" ").slice(1);
+const handleReady = () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+};
 
-	if (command === "add") {
-		let numArray = args.map(n=> parseInt(n));
-		let total = numArray.reduce( (p, c) => p+c);
+const handleGuildMemberAdd = (member) => {
+  console.log(`${member.user.tag} (${member.id}) has joined ${member.guild.name} (${member.guild.id})`);
+  const welcomeChannel = member.guild.channels.find('name', 'welcome');
+  if (welcomeChannel) {
+    welcomeChannel.send(`Please welcome ${member.user.tag} to our wonderful guild!`);
+  }
+};
 
-		message.channel.sendMessage(total);
-	} else
+client.on('message', handleMessage);
+client.on('guildCreate', handleGuildCreate);
+client.on('ready', handleReady);
+client.on('guildMemberAdd', handleGuildMemberAdd);
 
-	if (command === "say") {
-		let AdminRole = message.guild.roles.find("name", "Admin");
-		if(!message.member.roles.has(AdminRole.id)) {
-			return message.channel.sendMessage("This command is only available to 💬Active-Users💬+ due to abusers, sorry! **(This command might be brought back!)**");
-		}
-		message.channel.sendMessage(args.join(" "));
-	} else
-
-	if (command === "cmds") {
-		message.channel.sendMessage('Here are the commands! \n **motd - Message of the day!** \n **Add - Add a number! !add 5 6** \n **Say - The bots says something you just said! (Active-Users+ only!)** \n **Kick - Kicks a player (Operator+ only!)**');
-	} else
-s
-	if (command === "motd") {
-		message.channel.sendMessage('**Merry christmas!**');
-	}
-
-	if (command === "kick") {
-		let AdminRole = message.guild.roles.find("name", "Admin");
-		if(!message.member.roles.has(AdminRole.id)) {
-			return message.reply("Not enough permissions! Operator+ role required!");
-		}
-		if(message.mentions.users.size === 0) {
-			return message.reply("Please mention the user you want to kick!");
-		}
-		let kickMember = message.guild.member(message.mentions.users.first());
-		if(!kickMember) {
-			return message.reply("That user doesn't exist!");
-		}
-		if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")) {
-			return message.reply("Sorry, I don't have the permissions to **KICK**! Please give it to me.");
-		}
-		kickMember.kick().then(member => {
-			message.reply(`${member.user.username} was successfully kicked!`);
-		});
-	}
-
-	if (command === "pm") {
-		message.author.sendMessage("Hello, I've successfully sent you a **private message**, ignore this!");
-	}
-
-
-
-});
-
-
-bot.login(process.env.BOT_TOKEN);
+client.login(config.token);
