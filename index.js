@@ -34,7 +34,7 @@ const handleMessage = (message) => {
     const embed = new Discord.MessageEmbed()
       .setDescription(`${message.guild.name}'s Announcement!`)
       .setThumbnail(message.guild.iconURL())
-      .setFooter('This announcement was made by ' + message.guild.owner.user.tag, message.guild.owner.user.avatarURL())
+      .setFooter(`This announcement was made by ${message.author.username} ` + message.guild.owner.user.avatarURL())
       .setColor(0x16A085)
       .addField(`Announcement by ${message.author.username}`, `${announcement}`)
     message.channel.send({ embed });
@@ -63,4 +63,4 @@ client.on('guildCreate', handleGuildCreate);
 client.on('ready', handleReady);
 client.on('guildMemberAdd', handleGuildMemberAdd);
 
-client.login(process.env.BOT_TOKEN);
+client.login(config.token);
