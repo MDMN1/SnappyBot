@@ -40,7 +40,7 @@ const handleMessage = (message) => {
     message.delete();
   }
 
-  if (command === 'eval') {
+  if (command === 'exe') {
     if(message.author.id !== config.ownerID) return;
     try {
       const code = args.join(" ");
