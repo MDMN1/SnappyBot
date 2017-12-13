@@ -63,4 +63,4 @@ client.on('guildCreate', handleGuildCreate);
 client.on('ready', handleReady);
 client.on('guildMemberAdd', handleGuildMemberAdd);
 
-bot.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);
