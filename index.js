@@ -66,7 +66,6 @@ const handleGuildCreate = (guild) => {
 
 const handleReady = () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setGame('!cmds');
 };
 
 const handleGuildMemberAdd = (member) => {
