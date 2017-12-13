@@ -36,7 +36,7 @@ const handleMessage = (message) => {
       .setThumbnail(message.guild.iconURL())
       .setFooter('Server owned by ' + message.guild.owner.user.tag, message.guild.owner.user.avatarURL())
       .setColor(0x16A085)
-      .addField(`Announcement by ${message.author.username}`, `${announcement}`)
+      .addField(`Announcement by ${message.author.username}!`, `${announcement}`)
     message.channel.send({ embed });
     message.delete();
   }
