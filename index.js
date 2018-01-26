@@ -15,6 +15,7 @@ client.commands.set('kick', require('./commands/kick.js'));
 client.commands.set('ban', require('./commands/ban.js'));
 client.commands.set('exe', require('./commands/exe.js'));
 client.commands.set('cmds', require('./commands/cmds.js'));
+client.commands.set('8ball', require('./commands/8ball.js'));
 
 client.on('message', message => require('./events/message.js')(client, message));
 client.on('guildCreate', guild => require('./events/guildCreate.js')(client, guild));
