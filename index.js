@@ -1,84 +1,24 @@
 /* eslint consistent-return: 0, no-console: 0 */
 const Discord = require('discord.js');
 
-const config = require('./config.json');
-
 const client = new Discord.Client();
+client.config = require('./config.json');
 
-const handleMessage = (message) => {
-  if (message.author.bot) return;
+client.log = require('./functions/log.js');
 
-  if (message.content.indexOf(config.prefix) !== 0) return;
+client.commands = new Discord.Collection();
 
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
+client.commands.set('ping', require('./commands/ping.js'));
+client.commands.set('announce', require('./commands/announce.js'));
+client.commands.set('say', require('./commands/say.js'));
+client.commands.set('kick', require('./commands/kick.js'));
+client.commands.set('ban', require('./commands/ban.js'));
+client.commands.set('exe', require('./commands/exe.js'));
+client.commands.set('cmds', require('./commands/cmds.js'));
 
-  if (command === 'ping') {
-    message.channel.send('Pong...').then((msg) => {
-      msg.edit(`Pong! Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms!`);
-    });
-  } else
+client.on('message', message => require('./events/message.js')(client, message));
+client.on('guildCreate', guild => require('./events/guildCreate.js')(client, guild));
+client.on('ready', () => require('./events/ready.js')(client));
+client.on('guildMemberAdd', member => require('./events/guildMemberAdd.js')(client, member));
 
-  if (command === 'say') {
-    if (message.author.id !== config.ownerID) return message.reply('Not enough permissions!');
-    message.channel.send(args.join(' '));
-    message.delete();
-  } else
-
-  if (command === 'announce') {
-    const AnnouncePerm = message.guild.roles.find("name", "Announce Permission");
-    if(!message.member.roles.has(AnnouncePerm.id)) {
-      return message.channel.send('You do not have enough **permissions** to execute this command (Announce Permission required!)');
-    }
-    const announce = announcement = args.join(" ");
-    const embed = new Discord.MessageEmbed() 
-      .setThumbnail(message.guild.iconURL())
-      .setFooter('Server owned by ' + message.guild.owner.user.tag, message.guild.owner.user.avatarURL())
-      .setColor(0x16A085)
-      .addField(`Announcement by ${message.author.username}!`, `${announcement}`)
-    message.channel.send({ embed });
-    message.delete();
-  }
-
-  if (command === 'exe') {
-    if(message.author.id !== config.ownerID) return;
-    try {
-      const code = args.join(" ");
-      const evaled = eval(code);
-
-      if (typeof evaled !== "string")
-        evaled = require("util").inspect(evaled);
-
-      message.channel.send(clean(evaled), {code:"xl"});
-    } catch (err) {
-      message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
-    }
-  }
-
-  if (command === 'cmds') {
-    message.channel.send('Adding it soon, stay stuned!');
-  }
-};
-
-const handleGuildCreate = (guild) => {
-  console.log(`I have been added to the guild: ${guild.name}, Owned by: ${guild.owner.user.tag}, with ${guild.memberCount} members.`);
-};
-
-const handleReady = () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-};
-
-const handleGuildMemberAdd = (member) => {
-  console.log(`${member.user.tag} (${member.id}) has joined ${member.guild.name} (${member.guild.id})`);
-  const welcomeChannel = member.guild.channels.find('name', 'welcome');
-  if (welcomeChannel) {
-    welcomeChannel.send(`Please welcome ${member.user.tag} to our wonderful guild!`);
-  }
-};
-
-client.on('message', handleMessage);
-client.on('guildCreate', handleGuildCreate);
-client.on('ready', handleReady);
-client.on('guildMemberAdd', handleGuildMemberAdd);
-
-client.login(process.env.BOT_TOKEN);
+client.login(client.config.token);

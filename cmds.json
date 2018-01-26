@@ -1,0 +1,3 @@
+{
+  "commandlist": "Here are the commands! \n **Ping** - Checks the Latency & the API. \n **Announce** - Announces a message you just said, requires announce permission role. \n **Say** - Makes the bot say what you just said, owner only. \n **exe** - Executes JavaScript Code, owner only. \n **cmds** - Shows a list of commands, that's what you just done now."
+}
