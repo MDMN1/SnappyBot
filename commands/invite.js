@@ -6,4 +6,5 @@ module.exports = (client, message) => {
     .setFooter('Please check your direct messages.')
     .setColor(0x16A085);
   message.channel.send({ embed });
+  message.author.send('The bot is not ready to get released to the public!');
 };
