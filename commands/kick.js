@@ -1,6 +1,6 @@
 module.exports = (client, message) => {
   const KickRole = message.guild.roles.find('name', 'Kick Permission');
-  if (!message.member.roles.hasPermission(KICK_MEMBERS)) {
+  if (!message.member.roles.hasPermission('KICK_MEMBERS')) {
     return message.reply('Kick Permission role required, to execute.');
   }
   if (message.mentions.users.size === 0) {
