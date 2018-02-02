@@ -1,6 +1,6 @@
 module.exports = (client, message) => {
   const BanRole = message.guild.roles.find('name', 'Ban Permission');
-  if (!message.member.roles.has(BanRole.id)) {
+  if (!message.member.roles.hasPermission('BAN_MEMBERS')) {
     return message.reply('Ban Permission role required to execute.');
   }
   if (message.mentions.users.size === 0) {
