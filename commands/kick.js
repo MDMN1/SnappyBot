@@ -1,7 +1,8 @@
+const Discord = require('discord.js');
+
 module.exports = (client, message) => {
-  const KickRole = message.guild.roles.find('name', 'Kick Permission');
-  if (!message.member.roles.hasPermission('KICK_MEMBERS')) {
-    return message.reply('Kick Permission role required, to execute.');
+  if (!message.member.roles.has('KICK_MEMBERS')) {
+    return message.reply('Kick Permission required to execute.');
   }
   if (message.mentions.users.size === 0) {
     return message.reply('Please type a user you want to kick like @Mikulasz12! jk pls no');
@@ -14,5 +15,10 @@ module.exports = (client, message) => {
     return message.reply('I need KICK_MEMBER to execute this command!');
   }
   kickMember.kick();
-  message.channel.send('User has been successfully kicked!')
+  const embed = new Discord.MessageEmbed()
+    .setThumbnail(message.guild.iconURL())
+    .setFooter('!kick')
+    .setColor(0x16A085)
+    .addField(`User kicked by ${message.author.username}!`, 'Reason coming soon!');
+  message.channel.send({ embed });
 };
