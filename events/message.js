@@ -8,6 +8,6 @@ module.exports = (client, message) => {
   const command = args.shift().toLowerCase();
 
   if (client.commands.has(command)) {
-    client.commands.get(command)(client, message, args)
+    client.commands.get(command)(client, message, args);
   }
 };

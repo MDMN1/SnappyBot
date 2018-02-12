@@ -3,9 +3,7 @@ const Discord = require('discord.js');
 module.exports = (client, message, args) => {
   const question = questions = args.join(' ');
   const answer = answers[Math.floor(Math.random() * answers.length)];
-  const embed = new Discord.MessageEmbed() 
-    /*.setThumbnail(message.guild.iconURL())*/
-    .setFooter(`The Magic !8ball`)
+  const embed = new Discord.MessageEmbed()
     .setColor(0xFFC733)
     .addField(`${question}`, `${answer}`);
   message.channel.send({ embed });
