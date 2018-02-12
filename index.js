@@ -19,6 +19,7 @@ client.commands.set('add', require('./commands/add.js'));
 client.commands.set('multiply', require('./commands/multiply.js'));
 client.commands.set('divide', require('./commands/divide.js'));
 client.commands.set('subtract', require('./commands/subtract.js'));
+client.commands.set('about', require('./commands/about.js'));
 
 client.on('message', message => require('./events/message.js')(client, message));
 client.on('guildCreate', guild => require('./events/guildCreate.js')(client, guild));
