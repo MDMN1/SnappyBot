@@ -1,11 +1,9 @@
 const Discord = require('discord.js');
 
 module.exports = (client, message) => {
+  message.reply('Check your Direct Messages!');
   const embed = new Discord.MessageEmbed()
-    .setThumbnail(message.guild.iconURL())
-    .setFooter('!invite')
-    .addField('User Input', 'Check your direct messages!')
-    .setColor(0x16A085);
-  message.channel.send({ embed });
-  message.author.send('The bot is not ready to get released to the public!');
+    .setColor(0x3393FF)
+    .addField('Here you go!', 'https://discordapp.com/oauth2/authorize?client_id=407179814974259200&scope=bot&permissions=2146958591');
+  message.author.send({ embed });
 };
