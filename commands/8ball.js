@@ -38,5 +38,5 @@ const answers = [
   'Why would you ask that question..',
   'Maybe, I am too dumb to figure it out.',
   'Maybe, let me check, sorry no.',
-  'Maybe, let me check, yes!'
+  'Maybe, let me check, yes!',
 ];
