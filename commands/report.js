@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 
 module.exports = (client, message, args) => {
+  if (message.channel.type === 'dm') return message.reply('Sorry, you are not allowed to use this command in your PM\'s');
   const rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if (!rUser) return message.channel.send('Couldn\'t find user.');
   const rreason = args.join(' ').slice(22);
