@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "discord.js": "^12.0.0-dev",
-    "superagent": "^3.8.2"
+    "superagent": "^3.8.2",
+    "request": "8.9.4"
   },
   "devDependencies": {
     "eslint": "^4.17.0",
@@ -13,7 +14,7 @@
     "eslint-plugin-import": "^2.8.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "Mikulasz12",
   "license": "ISC"
