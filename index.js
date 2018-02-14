@@ -27,6 +27,7 @@ client.commands.set('ban', require('./commands/ban.js'));
 client.commands.set('report', require('./commands/report.js'));
 client.commands.set('dog', require('./commands/dog.js'));
 client.commands.set('cat', require('./commands/cat.js'));
+client.commands.set('setgame', require('./commands/setGame.js'));
 
 client.on('message', message => require('./events/message.js')(client, message));
 client.on('guildCreate', guild => require('./events/guildCreate.js')(client, guild));
