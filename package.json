@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "discord.js": "^12.0.0-dev",
+    "superagent": "^3.8.2"
   },
   "devDependencies": {
     "eslint": "^4.17.0",
