@@ -3,7 +3,7 @@ const superagent = require('superagent');
 
 module.exports = async (client, message) => {
   const { body } = await superagent
-  .get('https://random.cat/meow');
+    .get('https://random.cat/meow');
 
   const embed = new Discord.MessageEmbed()
     .setDescription(':cat: MEOW MEOW HISS SCRATCH!')
