@@ -7,11 +7,6 @@
     "discord.js": "^11.3.0",
     "superagent": "^3.8.2",
   },
-  "devDependencies": {
-    "eslint": "^4.17.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0"
-  },
   "scripts": {
     "start": "node index.js"
   },
