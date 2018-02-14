@@ -6,7 +6,7 @@ module.exports = async (client, message) => {
     .get('https://random.dog/woof.json');
 
   const embed = new Discord.MessageEmbed()
-    .setDescription(':dog2: BARK BARK!')
+    .setDescription(':dog2: BARK BARK BITE!')
     .setImage(body.url)
     .setColor(0xFFE333);
 
