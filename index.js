@@ -29,6 +29,7 @@ client.commands.set('dog', require('./commands/dog.js'));
 client.commands.set('cat', require('./commands/cat.js'));
 client.commands.set('setgame', require('./commands/setGame.js'));
 client.commands.set('dice', require('./commands/dice.js'));
+client.commands.set('resetgame', require('./commands/resetgame.js'));
 
 client.on('message', message => require('./events/message.js')(client, message));
 client.on('guildCreate', guild => require('./events/guildCreate.js')(client, guild));
