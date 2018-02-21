@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 module.exports = (client, message, args) => {
-  if (message.author.id !== client.config.ownerID) return;
+  if (message.author.id !== process.env.ownerID) return;
   const status = realstatus = args.join(' ');
   if (status.length === 0) {
     const embed = new Discord.MessageEmbed()
