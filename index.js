@@ -12,7 +12,6 @@ client.commands = new Discord.Collection();
 client.commands.set('ping', require('./commands/ping.js'));
 client.commands.set('announce', require('./commands/announce.js'));
 client.commands.set('say', require('./commands/say.js'));
-client.commands.set('exe', require('./commands/exe.js'));
 client.commands.set('cmds', require('./commands/cmds.js'));
 client.commands.set('8ball', require('./commands/8ball.js'));
 client.commands.set('invite', require('./commands/invite.js'));
