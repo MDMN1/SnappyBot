@@ -37,4 +37,4 @@ client.on('guildCreate', guild => require('./events/guildCreate.js')(client, gui
 client.on('ready', () => require('./events/ready.js')(client));
 client.on('guildMemberAdd', member => require('./events/guildMemberAdd.js')(client, member));
 
-client.login(client.config.token);
+client.login(process.env.BOT_TOKEN);
