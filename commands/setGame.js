@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = (client, message, args) => {
   if (message.author.id !== client.config.ownerID) return;
-  const status = realstatus = args.join(' ');
+  const status = args.join(' ');
   if (status.length === 0) {
     const embed = new Discord.MessageEmbed()
       .setColor(0xFF0000)

@@ -12,6 +12,7 @@ client.commands = new Discord.Collection();
 client.commands.set('ping', require('./commands/ping.js'));
 client.commands.set('announce', require('./commands/announce.js'));
 client.commands.set('say', require('./commands/say.js'));
+client.commands.set('exe', require('./commands/exe.js'));
 client.commands.set('cmds', require('./commands/cmds.js'));
 client.commands.set('8ball', require('./commands/8ball.js'));
 client.commands.set('invite', require('./commands/invite.js'));
@@ -29,10 +30,11 @@ client.commands.set('cat', require('./commands/cat.js'));
 client.commands.set('setgame', require('./commands/setGame.js'));
 client.commands.set('dice', require('./commands/dice.js'));
 client.commands.set('resetgame', require('./commands/resetgame.js'));
+client.commands.set('setprefix', require('./commands/setprefix'));
 
 client.on('message', message => require('./events/message.js')(client, message));
 client.on('guildCreate', guild => require('./events/guildCreate.js')(client, guild));
 client.on('ready', () => require('./events/ready.js')(client));
 client.on('guildMemberAdd', member => require('./events/guildMemberAdd.js')(client, member));
 
-client.login(process.env.BOT_TOKEN);
+client.login(client.config.token);
