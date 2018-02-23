@@ -20,5 +20,6 @@ module.exports = (client, message, args) => {
       .addField('Purged in', message.channel)
       .addField('Time', message.createdAt);
     actionlog.send({ embedlog });
+    message.delete({ embedlog });
   });
 };

@@ -30,10 +30,13 @@ client.commands.set('setgame', require('./commands/setGame.js'));
 client.commands.set('dice', require('./commands/dice.js'));
 client.commands.set('resetgame', require('./commands/resetgame.js'));
 client.commands.set('clean', require('./commands/clean.js'));
+client.commands.set('weather', require('./commands/weather.js'));
+client.commands.set('spotify', require('./commands/spotify.js'));
+
 
 client.on('message', message => require('./events/message.js')(client, message));
 client.on('guildCreate', guild => require('./events/guildCreate.js')(client, guild));
 client.on('ready', () => require('./events/ready.js')(client));
 client.on('guildMemberAdd', member => require('./events/guildMemberAdd.js')(client, member));
 
-client.login(process.env.secret);
+client.login(client.config.token);
